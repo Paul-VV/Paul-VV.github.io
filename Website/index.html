@@ -9,45 +9,40 @@
   <body>
     <main class="scene">
       <div class="arcade-room" aria-hidden="true">
-        <div class="room-glow"></div>
-        <div class="neon-strip top"></div>
-        <div class="neon-strip bottom"></div>
+        <div class="arcade-lights"></div>
       </div>
-
       <section class="cabinet">
-        <div class="cabinet-top"></div>
         <div class="cabinet-body">
           <div class="screen">
             <div class="scanline"></div>
             <h1>Paul Vezhdel</h1>
-            <p class="subtitle">Deluxe Arcade Cabinet</p>
-            <div class="equalizer" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+            <h2 class="screen-title"><span>Insert Coin to Start</span></h2>
           </div>
           <div class="coin-panel" aria-hidden="true">
-            <div class="coin-slot">
-              <span class="slot"></span>
-              <span class="coin-return"></span>
-            </div>
-            <div class="coin-labels">
-              <span>25¢</span>
-              <span>Insert Coin</span>
-            </div>
+            <button class="coin-button" type="button">
+              <span class="coin-slot">
+                <span class="slot"></span>
+              </span>
+              <span class="coin-text">
+                <span class="coin-value">25¢</span>
+                Insert Coin
+              </span>
+            </button>
           </div>
-          <div class="controls">
-            <div class="joystick"></div>
-            <div class="buttons">
-              <span class="btn-dot"></span>
-              <span class="btn-dot"></span>
-              <span class="btn-dot"></span>
+          <div class="control-panel">
+            <div class="player right">
+              <div class="joystick"></div>
+              <div class="button-grid">
+                <span class="button"></span>
+                <span class="button"></span>
+                <span class="button"></span>
+                <span class="button"></span>
+                <span class="button"></span>
+                <span class="button"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="cabinet-base"></div>
       </section>
 
       <div class="floating-lights" aria-hidden="true">
@@ -56,5 +51,6 @@
         <span></span>
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
