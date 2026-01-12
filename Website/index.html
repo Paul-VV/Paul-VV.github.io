@@ -8,23 +8,43 @@
   </head>
   <body>
     <main class="scene">
-      <header class="mast">
-        <h1>Paul Vezhdel</h1>
-        <div class="actions">
-          <a class="btn primary" href="#">Enter</a>
-          <a class="btn ghost" href="#">Read Brief</a>
-        </div>
-      </header>
-
-      <div class="lasers" aria-hidden="true">
-        <span class="laser one"></span>
-        <span class="laser two"></span>
-        <span class="laser three"></span>
-        <span class="laser four"></span>
-        <span class="laser five"></span>
+      <div class="arcade-room" aria-hidden="true">
+        <div class="room-glow"></div>
+        <div class="neon-strip top"></div>
+        <div class="neon-strip bottom"></div>
       </div>
 
-      <div class="orb" aria-hidden="true"></div>
+      <section class="cabinet">
+        <div class="cabinet-top"></div>
+        <div class="cabinet-body">
+          <div class="screen">
+            <div class="scanline"></div>
+            <h1>Paul Vezhdel</h1>
+            <p class="subtitle">Deluxe Arcade Cabinet</p>
+            <div class="equalizer" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="controls">
+            <div class="joystick"></div>
+            <div class="buttons">
+              <span class="btn-dot"></span>
+              <span class="btn-dot"></span>
+              <span class="btn-dot"></span>
+            </div>
+          </div>
+        </div>
+        <div class="cabinet-base"></div>
+      </section>
+
+      <div class="floating-lights" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </main>
   </body>
 </html>
