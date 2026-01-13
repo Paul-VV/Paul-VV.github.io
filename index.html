@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="scene">
+    <main class="scene" data-view="lobby">
       <div class="arcade-room" aria-hidden="true">
         <div class="arcade-lights"></div>
       </div>
@@ -18,11 +18,12 @@
             <h1>Paul Vezhdel</h1>
             <h2 class="screen-title"><span>Insert Coin to Start</span></h2>
           </div>
-          <div class="coin-panel" aria-hidden="true">
-            <button class="coin-button" type="button">
+          <div class="coin-panel">
+            <button class="coin-button" type="button" aria-label="Insert coin to continue">
               <span class="coin-slot">
                 <span class="slot"></span>
               </span>
+              <span class="coin-drop" aria-hidden="true"></span>
               <span class="coin-text">
                 <span class="coin-value">25¢</span>
                 Insert Coin
@@ -50,6 +51,11 @@
         <span></span>
         <span></span>
       </div>
+      <section class="next-screen" aria-live="polite">
+        <h1>Welcome Player One</h1>
+        <p>The cabinet boots up. Your next screen can live here.</p>
+        <button class="return-button" type="button">Back to Lobby</button>
+      </section>
     </main>
     <script src="script.js"></script>
   </body>
