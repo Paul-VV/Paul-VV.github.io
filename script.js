@@ -5,7 +5,6 @@ const screen = document.querySelector(".screen");
 const coinButton = document.querySelector(".coin-button");
 const coinDrop = coinButton ? coinButton.querySelector(".coin-drop") : null;
 const coinSlot = coinButton ? coinButton.querySelector(".coin-slot") : null;
-const returnButton = document.querySelector(".return-button");
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -34,7 +33,14 @@ if (scene && cabinet && lights) {
 }
 
 if (coinButton) {
+  const target = coinButton.dataset.target || "play.html";
   let isAnimating = false;
+  let isPowerOff = false;
+  const coinInsertDuration = 900;
+  const zoomDelay = 1000;
+  const zoomDuration = 900;
+
+  const goToTarget = () => window.location.assign(target);
 
   const startZoom = () => {
     if (scene) {
@@ -44,64 +50,82 @@ if (coinButton) {
     if (cabinet) {
       const onZoomEnd = (event) => {
         if (event.animationName !== "cabinetZoom") return;
-        if (scene) {
-          scene.dataset.view = "next";
-          scene.classList.remove("zooming");
-        }
+        goToTarget();
       };
       cabinet.addEventListener("animationend", onZoomEnd, { once: true });
     } else if (scene) {
-      scene.dataset.view = "next";
-      scene.classList.remove("zooming");
+      goToTarget();
     }
   };
 
   coinButton.addEventListener("click", () => {
     if (isAnimating) return;
+    if (isPowerOff || coinButton.disabled) return;
+    if (cabinet && cabinet.classList.contains("power-off")) return;
     isAnimating = true;
 
-    if (prefersReduced.matches) {
-      if (scene) {
-        scene.dataset.view = "next";
-      }
-      return;
-    }
-
-    coinButton.disabled = true;
     if (resetSceneTransforms) {
       resetSceneTransforms();
     }
 
-    coinButton.classList.add("inserting");
-
-    if (coinDrop) {
-      coinDrop.addEventListener("animationend", startZoom, { once: true });
-    } else {
-      window.setTimeout(startZoom, 1000);
-    }
-  });
-}
-
-if (returnButton && scene && coinButton) {
-  returnButton.addEventListener("click", () => {
-    scene.dataset.view = "lobby";
     coinButton.classList.remove("inserting");
-    coinButton.disabled = false;
+    if (scene) {
+      scene.classList.remove("zooming");
+      void scene.offsetWidth;
+    }
+    void coinButton.offsetWidth;
+    coinButton.classList.add("inserting");
+    coinButton.disabled = true;
+
+    window.setTimeout(() => {
+      if (screen) {
+        screen.classList.add("dimmed");
+      }
+      startZoom();
+    }, zoomDelay);
+    window.setTimeout(goToTarget, zoomDelay + zoomDuration + 100);
   });
+
+  if (screen && cabinet) {
+    const powerCycle = () => {
+      isPowerOff = true;
+      screen.classList.add("power-off");
+      cabinet.classList.add("power-off");
+      coinButton.disabled = true;
+      window.setTimeout(() => {
+        screen.classList.remove("power-off");
+        cabinet.classList.remove("power-off");
+        coinButton.disabled = false;
+        isPowerOff = false;
+      }, 5000);
+    };
+
+    window.setTimeout(() => {
+      powerCycle();
+      window.setInterval(powerCycle, 20000);
+    }, 15000);
+  }
 }
 
-if (screen && cabinet && !prefersReduced.matches) {
-  const powerCycle = () => {
-    screen.classList.add("power-off");
-    cabinet.classList.add("power-off");
-    window.setTimeout(() => {
-      screen.classList.remove("power-off");
-      cabinet.classList.remove("power-off");
-    }, 5000);
+const navMenu = document.querySelector(".next-nav");
+const menuButton = document.querySelector(".menu-button");
+
+if (navMenu && menuButton) {
+  const toggleMenu = (force) => {
+    const shouldOpen = typeof force === "boolean" ? force : !navMenu.classList.contains("open");
+    navMenu.classList.toggle("open", shouldOpen);
+    menuButton.setAttribute("aria-expanded", String(shouldOpen));
   };
 
-  window.setTimeout(() => {
-    powerCycle();
-    window.setInterval(powerCycle, 20000);
-  }, 15000);
+  menuButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  document.addEventListener("click", () => toggleMenu(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      toggleMenu(false);
+    }
+  });
 }
