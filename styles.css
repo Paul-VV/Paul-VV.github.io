@@ -371,13 +371,6 @@ body {
   color: rgba(240, 247, 255, 0.78);
 }
 
-.screen-tagline {
-  margin: 0 0 18px;
-  font-size: 0.95rem;
-  color: rgba(191, 233, 255, 0.7);
-  line-height: 1.5;
-}
-
 .screen-highlights {
   display: flex;
   flex-wrap: wrap;
@@ -416,7 +409,6 @@ body {
 .screen.dimmed h1,
 .screen.dimmed .screen-title,
 .screen.dimmed .screen-role,
-.screen.dimmed .screen-tagline,
 .screen.dimmed .screen-highlights {
   opacity: 0;
   visibility: hidden;
@@ -426,7 +418,6 @@ body {
 
 .screen.power-off .screen-title span,
 .screen.power-off .screen-role,
-.screen.power-off .screen-tagline,
 .screen.power-off .screen-highlights {
   animation: none;
   opacity: 0;
