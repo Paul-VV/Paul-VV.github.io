@@ -1078,6 +1078,10 @@ body {
   gap: 20px;
 }
 
+.connect-bottom {
+  margin-top: auto;
+}
+
 .dashboard-card {
   padding: 22px 24px;
   border-radius: 18px;
@@ -1195,6 +1199,10 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .stats-row {
@@ -1263,12 +1271,14 @@ body {
 
 .project-tags span {
   padding: 6px 10px;
+  min-width: 120px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: rgba(255, 255, 255, 0.72);
+  text-align: center;
 }
 
 .project-link {
