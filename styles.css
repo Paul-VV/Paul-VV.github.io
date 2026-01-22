@@ -334,6 +334,8 @@ body {
 }
 
 .coin-text .coin-value {
+  position: relative;
+  display: inline-block;
   text-decoration-line: underline overline;
   text-decoration-color: rgba(255, 255, 255, 0.7);
   text-decoration-thickness: 2px;
@@ -937,8 +939,31 @@ body {
   }
 
   .coin-text .coin-value {
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
+    text-decoration: none;
+    padding: 2px 0;
+  }
+
+  .coin-text .coin-value::before,
+  .coin-text .coin-value::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .coin-text .coin-value::before {
+    top: 0;
+  }
+
+  .coin-text .coin-value::after {
+    bottom: 0;
+  }
+
+  .cabinet.power-off .coin-text .coin-value::before,
+  .cabinet.power-off .coin-text .coin-value::after {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
