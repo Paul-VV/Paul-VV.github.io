@@ -71,19 +71,20 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(15, 12, 24, 0.9);
+  border: 1px solid rgba(122, 92, 255, 0.55);
+  background: radial-gradient(circle at 30% 30%, rgba(70, 120, 255, 0.35), rgba(12, 8, 24, 0.95));
   display: grid;
   place-items: center;
   cursor: pointer;
   box-shadow:
     0 6px 16px rgba(0, 0, 0, 0.4),
-    inset 0 0 12px rgba(255, 255, 255, 0.06);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    0 0 16px rgba(88, 120, 255, 0.35),
+    inset 0 0 14px rgba(120, 92, 255, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .menu-button:focus-visible {
-  outline: 2px solid rgba(168, 85, 247, 0.7);
+  outline: 2px solid rgba(120, 120, 255, 0.9);
   outline-offset: 2px;
 }
 
@@ -102,8 +103,10 @@ body {
   width: 18px;
   height: 2px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
+  background: #ffffff;
+  box-shadow:
+    0 0 10px rgba(110, 120, 255, 0.6),
+    0 0 16px rgba(70, 210, 255, 0.35);
 }
 
 .menu-panel {
@@ -1180,7 +1183,7 @@ body {
   padding: 24px 26px;
   border-radius: 20px;
   background: rgba(10, 14, 28, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 120, 255, 0.35);
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.32);
   display: grid;
   gap: 12px;
@@ -1188,7 +1191,7 @@ body {
 
 .panel.accent {
   background: rgba(20, 18, 32, 0.88);
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(120, 120, 255, 0.45);
 }
 
 .panel h3 {
@@ -1229,7 +1232,7 @@ body {
   padding: 6px 12px;
   border-radius: 999px;
   background: rgba(8, 10, 20, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(120, 120, 255, 0.45);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1250,7 +1253,7 @@ body {
   padding: 18px 20px;
   border-radius: 16px;
   background: rgba(8, 12, 24, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(120, 120, 255, 0.4);
   display: grid;
   gap: 8px;
 }
@@ -1279,7 +1282,7 @@ body {
   padding: 22px 24px;
   border-radius: 18px;
   background: rgba(10, 14, 28, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(120, 120, 255, 0.4);
   display: grid;
   gap: 12px;
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
@@ -1308,7 +1311,7 @@ body {
   padding: 6px 10px;
   min-width: 120px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(120, 120, 255, 0.45);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -1317,16 +1320,25 @@ body {
 }
 
 .project-link {
-  color: var(--neon-blue);
-  text-decoration: none;
-  font-weight: 600;
+  color: #7fe7ff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-size: 0.8rem;
+  text-shadow:
+    0 0 8px rgba(127, 231, 255, 0.6),
+    0 0 16px rgba(127, 231, 255, 0.35);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .project-link:hover {
   color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(127, 231, 255, 0.6);
 }
 
 .coming-soon {
@@ -1415,8 +1427,8 @@ body {
   justify-content: center;
   padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
+  border: 1px solid rgba(120, 120, 255, 0.6);
+  background: rgba(12, 12, 26, 0.6);
   color: var(--text);
   font-family: var(--font-display);
   font-weight: 600;
@@ -1424,12 +1436,18 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:
+    0 0 10px rgba(120, 120, 255, 0.35),
+    inset 0 0 10px rgba(120, 120, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .return-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    0 0 14px rgba(120, 120, 255, 0.55),
+    inset 0 0 12px rgba(120, 120, 255, 0.35);
 }
 
 @keyframes rise {
